@@ -1,13 +1,13 @@
-require 'docking_station'
+require 'van'
 
-describe DockingStation do
+describe Van do
 
   describe 'initialization' do
     it 'has a default capacity' do
-      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+      expect(subject.capacity).to eq Van::DEFAULT_CAPACITY
     end
 
-    subject { DockingStation.new }
+    subject { Van.new }
     let(:bike) { double(:bike) }
     it 'defaults capacity' do
       described_class::DEFAULT_CAPACITY.times do
@@ -29,7 +29,7 @@ describe DockingStation do
     it 'does not release broken bikes' do
       bike = double(:bike, broken?: true)
       subject.dock bike
-      expect {subject.release_broken_bike}.to raise_error 'There are no broken bikes available'
+      expect {subject.release_broken_bike}.to raise_error 'cannot release a broken bike'
     end
 
     it 'raises error when there are no more bikes available' do
