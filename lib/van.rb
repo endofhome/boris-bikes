@@ -1,6 +1,6 @@
 require_relative 'bike'
 
-class DockingStation
+class Van
 
   attr_accessor :capacity
   DEFAULT_CAPACITY = 20
